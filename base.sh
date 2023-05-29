@@ -28,7 +28,7 @@ echo ${strtext:1:2}
 
 rtxt="only read"
 readonly rtxt
-rtxt="ja"
+# rtxt="ja"
 echo $rtxt
 # unset rtxt
 
@@ -61,11 +61,37 @@ ret=$?
 echo $ret
 
 # 关联数组，就是map；建议使用字符串设置key
-declare -a wodemap
-wodemap["age"]=9
-wodemap["name"]=rz
+declare -A wodemap
+wodemap["age"]=*
+wodemap["name"]="rz"
 wodemap["haha"]="app"
-# wodemap[txt]=tt
-wodemap[1]="nide"
+wodemap["name1"]="rz1"
 
 echo ${wodemap["name"]}
+# 优先使用@
+# echo "${wodemap[*]}"
+echo "${wodemap[@]}"
+# echo ${#wodemap[*]}
+echo ${#wodemap[@]}
+
+a=10
+b=20
+# -gt -lt -eq -ne -ge -le;[，] 都有空格
+if [ $a -gt $b ]; then
+    echo "a bigger"
+else
+    echo "b bigger"
+fi
+
+# 检测字符串是否不为空；不存在和""为空；" "不为空
+c=" "
+if [ $c ]; then
+    echo "c is set"
+else
+    echo "c is not set"
+fi
+
+echo -e "OK! \n" # -e 开启转义;默认也转义
+echo "OK! \\\n" # \\ 转义字符
+echo 'OK \\n' # \ 转义字符
+echo "It is a test"
