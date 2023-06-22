@@ -59,6 +59,8 @@ echo $-
 # 显示最后命令的退出状态。0表示没有错误，其他任何值表明有错误；最好设置成变量再打印
 ret=$?
 echo $ret
+echo "next is $! haha"
+echo $!
 
 # 关联数组，就是map；建议使用字符串设置key
 declare -A wodemap
